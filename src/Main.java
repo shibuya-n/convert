@@ -183,41 +183,41 @@ public class Main {
         int total = 0;
         int j = 0;
 
-        ArrayList<Integer> individualHex = new ArrayList<>();
+        int[] individualHex = new int[10];
+
 
 
         for (int i = input.length() - 1; i >= 0; i--) {
             String num = input.substring(i, i + 1);
-            switch (num) {
-                case "A":
-                    individualHex.add(10);
-                    break;
-                case "B":
-                    individualHex.add(11);
-                    break;
-                case "C":
-                    individualHex.add(12);
-                    break;
-                case "D":
-                    individualHex.add(13);
-                    break;
-                case "E":
-                    individualHex.add(14);
-                    break;
-                case "F":
-                    individualHex.add(15);
-                    break;
-
-                default:
-                     individualHex.add(Integer.parseInt(num));
-
+            if (num.equals("A")) {
+                individualHex[i] = 10;
+            } else if (num.equals("B")) {
+                individualHex[i] = 11;
+            } else if (num.equals("C")) {
+                individualHex[i] = 12;
+            } else if (num.equals("D")) {
+                individualHex[i] = 13;
+            } else if (num.equals("E")) {
+                individualHex[i] = 14;
+            } else if (num.equals("F")) {
+                individualHex[i] = 15;
+            } else {
+                individualHex[i] = (Integer.parseInt(num));
             }
 
         }
-        for (int i = 0; i < individualHex.size(); i++){
-            total += individualHex.get(i) * Math.pow(16, j);
+        for (int i = 0; i < individualHex.length; i++){
 
-            j++;
+
+
+            if (null == individualHex[i]){
+                break;
+            } else {
+                total += individualHex[i] * Math.pow(16, j);
+
+                j++;
+            }
+
         }
         return total;
         }
