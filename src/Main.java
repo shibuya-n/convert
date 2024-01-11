@@ -183,7 +183,7 @@ public class Main {
         int total = 0;
         int j = 0;
 
-        int[] individualHex = new int[10];
+        int[] individualHex = new int[input.length()];
 
 
 
@@ -206,19 +206,13 @@ public class Main {
             }
 
         }
-        for (int i = 0; i < individualHex.length; i++){
-
-
-
-            if (null == individualHex[i]){
-                break;
-            } else {
+        for (int i = individualHex.length - 1; i >= 0 ; i--){
                 total += individualHex[i] * Math.pow(16, j);
 
                 j++;
             }
 
-        }
+
         return total;
         }
 
@@ -246,17 +240,33 @@ public class Main {
         }
     }
     public static String decimalToBinary(int input){
-        ArrayList<String> binaryCode = new ArrayList<>();
+
         String binary = "";
 
         int temp = input;
+        int arraySize = 0;
+
         while (temp > 0) {
-            int x = temp/2;
-            binaryCode.add(String.valueOf(temp % 2));
-            temp = x;
+            temp = temp/2;
+
+            arraySize++;
         }
-        for (int i = binaryCode.size()-1; i >= 0; i--){
-            binary += binaryCode.get(i);
+        String[] binaryCode = new String[arraySize];
+
+        int temp2 = input;
+        for (int i = 0; i < arraySize; i++){
+
+            int x = temp2/2;
+
+            binaryCode[i] = String.valueOf(temp2 % 2);
+            temp2 = x;
+        }
+        System.out.println(Arrays.toString(binaryCode));
+
+
+        for (int i = binaryCode.length-1; i >= 0; i--){
+            System.out.println(binaryCode[i]);
+            binary += binaryCode[i];
         }
         if (binary.length() == 8){
             return binary;
